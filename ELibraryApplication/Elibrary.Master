@@ -1,0 +1,141 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Elibrary.master.cs" Inherits="ELibraryApplication.Elibrary" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <%--- css ---%>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="datatables/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="fontawsome/css/all.css" rel="stylesheet" />
+    <link href="Elibrary.css" rel="stylesheet" />
+
+    <%-- JS and Jquery --%>
+    <script src="bootstrap/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/popper.min.js"></script>
+    <script src="datatables/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="Home.aspx">
+                        <img src="imgs/books.png" width="35" height="35 " />
+                        E-Library</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="Home.aspx">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#Features">Features</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#Process">Process</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <asp:LinkButton runat="server" ID="View_Books" class="nav-link" OnClick="View_Books_Click">
+                                   <button type="button" class="btn btn-info btn-sm"> View Books</button></asp:LinkButton>
+                            </li>
+                              
+                            <li class="nav-item active">
+                                <asp:LinkButton runat="server" ID="User_Login" class="nav-link" OnClick="User_Login_Click">
+                                    <button type="button" class="btn btn-success btn-sm">User Login</button></asp:LinkButton>
+                            </li>
+                            <li class="nav-item active">
+                                <asp:LinkButton runat="server" ID="Sign_In" class="nav-link" OnClick="Sign_In_Click">
+                                    <button type="button" class="btn btn-primary btn-sm">Sign Up</button></asp:LinkButton>
+                            </li>
+                            <li class="nav-item active">
+                                <asp:LinkButton runat="server" ID="Label_User_Admin" class="nav-link" OnClick="Label_User_Admin_Click">
+                                    <button type="button" class="btn btn-light btn-sm" Visible="false">Hello</button></asp:LinkButton>
+                              
+                            </li>
+                            <li class="nav-item active">
+                                <asp:LinkButton runat="server" ID="Logout" class="nav-link" Visible="false" OnClick="Logout_Click">
+                                    <button type="button" class="btn btn-dark btn-sm">Logout</button></asp:LinkButton>
+                            </li>
+                        </ul>
+
+                    </div>
+                </nav>
+            </header>
+        </div>
+
+        <div id="main-Content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            <footer>
+                <div class="card">
+                    <div id="footer1" class="card-header" style="background-color: #d1c9c9;">
+                        <div class="row text-center" style="margin-left:20px; margin-right:20px">
+                            <%--- <div class="col-xl-12 col-lg-12 col-md-3 col-sm-3 col-xs-12 text-center"></div>  ---%>
+
+                            <div class="col-xl-2  col-lg-2 col-md-2 col-sm-6  col-xs-12 text-center">
+                                <asp:LinkButton runat="server" class="footerlinks badge badge-pill badge-secondary" ID="Author_Management"
+                                     OnClick="Author_Management_Click" Visible="false">
+                                      Author Management </asp:LinkButton>
+                            </div>
+                             
+                            <div class="col-xl-2  col-lg-2 col-md-2 col-sm-6  col-xs-12 text-center">
+                                <asp:LinkButton runat="server" ID="Publicer_Management" class="footerlinks badge badge-pill badge-success"
+                                     OnClick="Publicer_Management_Click" Visible="false">
+                                      Publicer Management</asp:LinkButton>
+                            </div>
+                              
+                            <div class="col-xl-2  col-lg-2 col-md-2 col-sm-6  col-xs-12 text-center">
+                                <asp:LinkButton runat="server" class="footerlinks badge badge-pill badge-primary" ID="Admin_Login"
+                                     OnClick="Admin_Login_Click" Visible="true">
+                                      Admin Login</asp:LinkButton>
+                            </div>
+                           
+                            
+                            <div class="col-xl-2  col-lg-2 col-md-2 col-sm-6  col-xs-12 text-center">
+                                <asp:LinkButton runat="server" ID="Book_Inventory" class="footerlinks badge badge-pill badge-info" OnClick="Book_Inventory_Click"
+                                    Visible="false">
+                                          Book Inventory</asp:LinkButton>
+                            </div>
+
+                             
+                            <div class="col-xl-2  col-lg-2 col-md-2 col-sm-6  col-xs-12 text-center">
+                                <asp:LinkButton runat="server" ID="Member_Management" class="footerlinks badge badge-pill badge-warning"
+                                     OnClick="Member_Management_Click" Visible="false">
+                                          Member Management</asp:LinkButton>
+                            </div>
+
+                         
+                            <div class="col-xl-2  col-lg-2 col-md-2 col-sm-6  col-xs-12 text-center">
+                                <asp:LinkButton runat="server" ID="Book_Issuing" class="footerlinks badge badge-pill badge-secondary" 
+                                    OnClick="Book_Issuing_Click" Visible="false">
+                                         Book Issuing</asp:LinkButton>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-header text-center">
+                        &copy All right Reversed for 2020
+                    </div>
+                </div>
+
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>
